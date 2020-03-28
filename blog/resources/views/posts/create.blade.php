@@ -11,9 +11,9 @@
       <label for="exampleInputPassword1">Post description</label>
       <input name='description' type="textarea" class="form-control" id="exampleInputPassword1">
     </div>
-    <select name="" class="form-control">
+<select name="user_id" class="form-control">
         @foreach ($users as $user)
-            <option value="{{$user->name}}">{{$user->name}}</option>
+            <option value="{{$user->id}}">{{$user->name}}</option>
         @endforeach
     </select>
     <button type="submit" class="btn btn-primary mt-3">Create</button>

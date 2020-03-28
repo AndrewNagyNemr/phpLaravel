@@ -36,11 +36,34 @@ class PostController extends Controller
         // $post->title = $request->title;
         // $post->description = $request->description;
         // $post->save();
-        
+        // dd($request->user_id);
+
+
         Post::create([
             'title'=> $request->title,
-            'description'=> $request->description
+            'description'=> $request->description,
+            'user_id'=> $request->user_id
+
         ]);
         return redirect()->route('posts.index');
+    }
+
+    public function edit(){
+        $users = User::all();
+        $request=request();
+        $post = Post::find(request()->post);
+        return view('posts/edit',[
+            'users'=>$users,
+            'post'=>$post
+        ]);
+        // dd($post->title,$post->description, $post->user_id);
+    }
+    public function udate(){
+        $request= request();
+        dd($request->id, $request->title, $request->description);
+        return redirect()->route('posts.index');
+    }
+
+    public function destroy(){
     }
 }
